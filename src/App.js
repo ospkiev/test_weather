@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Loader from 'react-loader-spinner';
+import moment from 'moment';
 
 // import axios from 'axios';
 import { connect } from 'react-redux';
@@ -9,15 +11,30 @@ import styles from './App.module.css';
 
 class App extends Component {
 
+  state = {
+    date: {},
+    isLoaded: false,
+  }
 
-  // componentDidMount() {
-  //   this.props.fetchData();
-  // }
+
+  componentDidMount() {
+    this.props.fetchData(this.props.input);
+  }
 
   getData = (e) => {
     e.preventDefault();
     this.props.fetchData(this.props.input);
   }
+
+  timeFunction = () => {
+    setInterval(() => {
+      let date = moment().format('LLLL');
+      this.setState({
+        date: date,
+      })
+    }, 1000)
+  }
+
 
   render() {
     return (
