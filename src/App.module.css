@@ -1,22 +1,30 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .weather_info{
   list-style: none;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
   width: 20%;
   height: auto;
-  background: rgba(180, 227, 241,0.4);
-  border-radius: 3px;
+  background: transparent;
+  /* border-radius: 3px; */
   position: absolute;
   top: 20%;
-  left: 5%;
+  left: 4%;
 }
 
-li{
-  /* text-align: center; */
+.time{
+  position: absolute;
+  font-weight: 500;
+  font-size: 20px;
+  color:#fff;
+  top: 5%;
+  left: 4%;
 }
 
 .input_wrapper{
@@ -31,24 +39,30 @@ li{
 
 .input{
   color:#fff;
-  font-weight: 700;
+  font-weight: 400;
   /* position: absolute;
   right: 50px;
   top: 30px; */
   background-color: rgba(0, 0, 0, 0.5);
   border: none;
-  /* border-radius: 6px; */
   outline: 0;
 }
 
-
-.date{
-  position: absolute;
-  color:#fff;
-  top: 50px;
-  right: 50px;
-  font-weight: 500;
-  font-style: italic;
-  /* padding-left: 20px; */
+.main_img{
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  background-image: linear-gradient (rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  background-position: center;
+  height: 100vh;
 }
 
+.favoriteList{
+  position: absolute;
+  top: 15%;
+  right: 15%;
+}
+
+.city_name{
+  font-size: 2rem;;
+}
