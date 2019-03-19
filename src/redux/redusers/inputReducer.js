@@ -3,6 +3,9 @@ export default function inputReducer(state = '', action) {
         case 'input':
             return action.data;
 
+        case 'inputClear':
+            return action.data;
+
         default:
             return state;
 

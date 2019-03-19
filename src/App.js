@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { inputAction } from './redux/actions/inputAction';
 import { fetchData } from './redux/actions/fetchDataAction';
 import { saveToList } from './redux/actions/saveToListAction';
+import { inputClear } from './redux/actions/inputAction';
 import styles from './App.module.css';
 
 
@@ -18,6 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchData(this.props.input);
+    this.getWeatherFiveDays();
     this.timeFunction();
     this.getPicture();
   }
@@ -26,7 +28,16 @@ class App extends Component {
     e.preventDefault();
     await this.props.fetchData(this.props.input);
     this.props.saveToList(this.props.input);
-    this.getPicture(this.props.input)
+    this.getPicture(this.props.input);
+    this.props.inputClear();
+  }
+
+  getDataFromFavoriteList = (e) => {
+    let id = e.target.dataset.id;
+    let cityName = this.props.favoriteList.filter(el => el.id === id)[0].name;
+    this.props.fetchData(cityName);
+    this.getPicture(cityName);
+
   }
 
   timeFunction = () => {
@@ -39,8 +50,14 @@ class App extends Component {
     }, 1000)
   }
 
+  getWeatherFiveDays = () => {
+    let q = this.props.input;
+    axios.get(`https://api.openweathermap.org/data/2.5/forecast?APPID=8defc985a5e2c764076c53bf90c6c44e&units=metric&lang=ru&q=${q || 'Kiev'}`)
+      .then(res => console.log(res.data.list))
+      .catch(error => console.log(error))
+  }
+
   getPicture = (q) => {
-    // let q = this.props.input;
     axios.get(`https://pixabay.com/api/?key=5018958-ed49ccd90878e6614abdf24a6&q=${q || 'Kiev'}`)
       .then(res => {
         this.setState({
@@ -51,6 +68,7 @@ class App extends Component {
         console.log(error);
       })
   }
+
 
 
   render() {
@@ -77,7 +95,7 @@ class App extends Component {
                 <li><img src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`} alt="" /></li>
               </ul>
 
-              <div className={styles.favoriteList}>{favoriteList.map(el => <div>{el}</div>)}</div>
+              <div className={styles.favoriteList} onClick={this.getDataFromFavoriteList}>{favoriteList.map(el => <p className={styles.favorite_city} data-id={el.id}>{el.name}</p>)}</div>
 
             </div>
 
@@ -94,9 +112,9 @@ function mapStateToProps(state) {
     data: state.data.data,
     loading: state.data.loading,
     favoriteList: state.favoriteList,
-
   }
 }
+
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -108,6 +126,9 @@ function mapDispatchToProps(dispatch) {
     },
     saveToList: function (input) {
       dispatch(saveToList(input))
+    },
+    inputClear: function () {
+      dispatch(inputClear())
     }
   }
 }

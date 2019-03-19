@@ -4,3 +4,10 @@ export function inputAction(e) {
         data: e.target.value,
     }
 }
+
+export function inputClear() {
+    return {
+        type: 'inputClear',
+        data: '',
+    }
+}

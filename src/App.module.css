@@ -59,10 +59,16 @@
 
 .favoriteList{
   position: absolute;
-  top: 15%;
+  top: 10%;
   right: 15%;
+  color: #fff;
 }
 
 .city_name{
-  font-size: 2rem;;
+  font-size: 2rem;
+}
+
+.favorite_city{
+  margin-bottom: 8px;
+  cursor: pointer;
 }
