@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import Loader from 'react-loader-spinner';
+// import Loader from 'react-loader-spinner';
 import moment from 'moment';
-
-// import axios from 'axios';
 import { connect } from 'react-redux';
 import { inputAction } from './redux/actions/inputAction';
 import { fetchData } from './redux/actions/fetchDataAction';
+import { saveToList } from './redux/actions/saveToListAction';
 import styles from './App.module.css';
 
 
@@ -21,9 +20,10 @@ class App extends Component {
     this.props.fetchData(this.props.input);
   }
 
-  getData = (e) => {
+  getData = async (e) => {
     e.preventDefault();
-    this.props.fetchData(this.props.input);
+    await this.props.fetchData(this.props.input);
+    this.props.saveToList(this.props.input)
   }
 
   timeFunction = () => {
@@ -37,16 +37,35 @@ class App extends Component {
 
 
   render() {
+    const { data, input, loading, favoriteList } = this.props;
+    // console.log(data);
     return (
-      <div>
-        <form action="" onSubmit={this.getData}>
-          <div className={styles.input_wrapper}>
-            <input type="text" placeholder=" Enter name of city..." value={this.props.input} className={styles.input} onChange={this.props.inputDispatch} required />
-            {/* <img src={star} alt="Add to favorite" className={styles.img_star} onClick={favoriteCityListFunction} /> */}
+      <div className={styles.app}>
 
-          </div>
-          <p className={styles.date}></p>
-        </form>
+
+        {
+          !loading ? <p>Loading ...</p> :
+            <div>
+              <form action="" onSubmit={this.getData}>
+                <div className={styles.input_wrapper}>
+                  <input type="text" placeholder=" Enter name of city..." value={input} className={styles.input} onChange={this.props.inputDispatch} required />
+                </div>
+              </form>
+              <ul className={styles.weather_info}>
+                <li>Name : {data.name}</li>
+                <li>temperature : {data.main.temp} &deg; C</li>
+                <li>pressure : {data.main.pressure} mm Hg </li>
+                <li>humidity : {data.main.humidity} %</li>
+                <li>wind : {data.wind.speed} m/s</li>
+                <li>condition <img src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`} alt="" /></li>
+              </ul>
+
+              {favoriteList.map(el => <div>{el}</div>)}
+
+            </div>
+
+        }
+
       </div >
     );
   }
@@ -55,7 +74,10 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     input: state.input,
-    data: state.data
+    data: state.data.data,
+    loading: state.data.loading,
+    favoriteList: state.favoriteList,
+
   }
 }
 
@@ -67,6 +89,9 @@ function mapDispatchToProps(dispatch) {
     fetchData: function (input) {
       dispatch(fetchData(input))
     },
+    saveToList: function (input) {
+      dispatch(saveToList(input))
+    }
   }
 }
 

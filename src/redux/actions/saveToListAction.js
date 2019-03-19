@@ -7,3 +7,4 @@ export function saveToListAction(data) {
 
 export const saveToList = (city) => dispatch => {
     return dispatch(saveToListAction(city))
+}
