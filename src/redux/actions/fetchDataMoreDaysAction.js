@@ -7,8 +7,8 @@ export function fetchDataMoreDaysAction(data) {
     }
 };
 
-export const fetchDataMoreDays = (q) => dispatch => {
-    axios.get(`https://api.openweathermap.org/data/2.5/forecast?APPID=8defc985a5e2c764076c53bf90c6c44e&units=metric&lang=ru&q=${q || 'Kiev'}`)
+export const fetchDataMoreDays = (param) => dispatch => {
+    axios.get(`https://api.openweathermap.org/data/2.5/forecast?APPID=8defc985a5e2c764076c53bf90c6c44e&units=metric&lang=ru&q=${param || 'Kiev'}`)
         .then(res => dispatch(fetchDataMoreDaysAction(res.data)))
         // .then(res => console.log(res.data))
         .catch(error => console.log(error))

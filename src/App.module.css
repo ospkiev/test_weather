@@ -4,20 +4,6 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.weather_info{
-  list-style: none;
-  font-weight: 700;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #fff;
-  width: 20%;
-  height: auto;
-  background: transparent;
-  /* border-radius: 3px; */
-  position: absolute;
-  top: 20%;
-  left: 4%;
-}
-
 .time{
   position: absolute;
   font-weight: 500;
@@ -32,17 +18,12 @@
   position: absolute;
   top: 18px;
   right: 50px;
-  /* justify-content: space-between; */
-  /* width: 50px; */
   height: 30px;
 }
 
 .input{
   color:#fff;
   font-weight: 400;
-  /* position: absolute;
-  right: 50px;
-  top: 30px; */
   background-color: rgba(0, 0, 0, 0.5);
   border: none;
   outline: 0;
@@ -62,10 +43,6 @@
   top: 10%;
   right: 15%;
   color: #fff;
-}
-
-.city_name{
-  font-size: 2rem;
 }
 
 .favorite_city{
