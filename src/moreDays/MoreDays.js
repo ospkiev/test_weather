@@ -1,30 +1,13 @@
 import React, { Component } from 'react';
-// import moment from 'moment';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner'
 import styles from './MoreDays.module.css';
 
-
 class MoreDays extends Component {
-
-
-    getWeather = async () => {
-        let info = [];
-        info = this.props.moreDaysData.filter(el => el.dt_txt.includes('15:00:00'));
-        // let date = list.filter(el => el.dt_txt.includes('21:00:00')).map(el => moment.unix(el.dt).format('MMM Do YY'));
-        // let allweatherArr = [];
-        // allweatherArr.push(afterTemp, afterWeather, afterHumidity, date);
-        console.log(info);
-    }
-
 
     render() {
         const { moreDaysData, cityName } = this.props;
-        // const { data } = this.state;
-        // console.log(this.state.data);
-
-        // this.getNameCity();
-        this.getWeather();
+        // this.getWeather();
 
         return (
             <div>
@@ -54,5 +37,8 @@ function mapStateToProps(state) {
 
 
 export default connect(mapStateToProps, null)(MoreDays);
+
+
+
 
 

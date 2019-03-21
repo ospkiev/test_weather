@@ -19,13 +19,16 @@ class App extends Component {
   state = {
     date: '',
     picturesCity: {},
+    // fiveDaysWeather: [],
+    // fiveDaysDate: []
   }
 
-  componentDidMount() {
-    this.props.fetchData();
-    this.props.fetchDataMoreDays();
+  componentDidMount = async () => {
+    await this.props.fetchData();
+    await this.props.fetchDataMoreDays();
     this.timeFunction();
     this.getPicture();
+    // this.getWeather();
   }
 
   getData = async (e) => {
@@ -34,15 +37,17 @@ class App extends Component {
     this.props.saveToList(this.props.input);
     this.getPicture(this.props.input);
     this.props.inputClear();
-    this.props.fetchDataMoreDays(this.props.input);
+    await this.props.fetchDataMoreDays(this.props.input);
+    // this.getWeather();
   }
 
   getDataFromFavoriteList = (e) => {
     let id = e.target.dataset.id;
     let cityName = this.props.favoriteList.filter(el => el.id === id)[0].name;
     this.props.fetchData(cityName);
-    this.props.fetchDataMoreDays(cityName)
+    this.props.fetchDataMoreDays(cityName);
     this.getPicture(cityName);
+    // this.getWeather();
   }
 
   timeFunction = () => {
@@ -66,11 +71,24 @@ class App extends Component {
       })
   }
 
+  // getWeather() {
+  //   let info = [];
+  //   info = this.props.moreDaysData.filter(el => el.dt_txt.includes('15:00:00'));
+  //   let date = this.props.moreDaysData.filter(el => el.dt_txt.includes('15:00:00')).map(el => moment.unix(el.dt).format('MMM Do YY'));
+  //   this.setState({
+  //     fiveDaysWeather: info,
+  //     fiveDaysDate: date
+  //   })
+  //   console.log(this.props.moreDaysData);
+  // }
+
+
 
   render() {
     const { input, favoriteList } = this.props;
     return (
-      <div className={styles.app}>
+
+      < div className={styles.app} >
 
         <div>
           <form action="" onSubmit={this.getData}>
@@ -96,12 +114,16 @@ class App extends Component {
 }
 
 
+
+
 function mapStateToProps(state) {
   return {
     input: state.input,
     data: state.data.data,
     loading: state.data.loading,
     favoriteList: state.favoriteList,
+    // moreDaysData: state.moreDaysData.data.list,
+    // cityName: state.moreDaysData.data.city
   }
 }
 
