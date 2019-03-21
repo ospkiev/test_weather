@@ -21,7 +21,6 @@ class App extends Component {
     picturesCity: {},
   }
 
-
   componentDidMount() {
     this.props.fetchData();
     this.props.fetchDataMoreDays();
@@ -32,10 +31,10 @@ class App extends Component {
   getData = async (e) => {
     e.preventDefault();
     await this.props.fetchData(this.props.input);
-    this.props.fetchDataMoreDays(this.props.input);
     this.props.saveToList(this.props.input);
     this.getPicture(this.props.input);
     this.props.inputClear();
+    this.props.fetchDataMoreDays(this.props.input);
   }
 
   getDataFromFavoriteList = (e) => {
