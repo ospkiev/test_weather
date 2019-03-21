@@ -10,21 +10,21 @@
   font-size: 20px;
   color:#fff;
   top: 5%;
-  left: 4%;
+  left: 4.2%;
 }
 
 .input_wrapper{
   display: flex;
   position: absolute;
   top: 18px;
-  right: 50px;
+  right: 8.7%;
   height: 30px;
 }
 
 .input{
   color:#fff;
   font-weight: 400;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
   border: none;
   outline: 0;
 }
@@ -45,7 +45,7 @@
   color: #fff;
 }
 
-.favorite_city{
+.favorite_item{
   margin-bottom: 8px;
   cursor: pointer;
 }

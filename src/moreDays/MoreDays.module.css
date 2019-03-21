@@ -1,0 +1,30 @@
+.city_name{
+    font-size: 2rem;
+}
+
+.weather_info{
+list-style: none;
+font-weight: 700;
+font-family: Arial, Helvetica, sans-serif;
+color: #fff;
+width: 20%;
+height: auto;
+background: transparent;
+position: absolute;
+top: 20%;
+left: 4%;
+}
+
+.loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.icon{
+    display: block;
+    width: 100px;
+    height: auto;
+}
+  

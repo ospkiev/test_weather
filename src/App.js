@@ -81,7 +81,7 @@ class App extends Component {
           </form>
 
           <div className={styles.time}>{this.state.date}</div>
-          <div className={styles.favoriteList} onClick={this.getDataFromFavoriteList}>{favoriteList.map(el => <p className={styles.favorite_city} key={el.id} data-id={el.id}>{el.name}</p>)}</div>
+          <div className={styles.favoriteList} onClick={this.getDataFromFavoriteList}>{favoriteList.map(el => <p className={styles.favorite_item} key={el.id} data-id={el.id}>{el.name}</p>)}</div>
         </div>
 
         <Menu />
