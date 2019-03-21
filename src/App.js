@@ -19,8 +19,6 @@ class App extends Component {
   state = {
     date: '',
     picturesCity: {},
-    // fiveDaysWeather: [],
-    // fiveDaysDate: []
   }
 
   componentDidMount = async () => {
@@ -28,7 +26,6 @@ class App extends Component {
     await this.props.fetchDataMoreDays();
     this.timeFunction();
     this.getPicture();
-    // this.getWeather();
   }
 
   getData = async (e) => {
@@ -38,7 +35,6 @@ class App extends Component {
     this.getPicture(this.props.input);
     this.props.inputClear();
     await this.props.fetchDataMoreDays(this.props.input);
-    // this.getWeather();
   }
 
   getDataFromFavoriteList = (e) => {
@@ -47,7 +43,6 @@ class App extends Component {
     this.props.fetchData(cityName);
     this.props.fetchDataMoreDays(cityName);
     this.getPicture(cityName);
-    // this.getWeather();
   }
 
   timeFunction = () => {
@@ -70,18 +65,6 @@ class App extends Component {
         console.log(error);
       })
   }
-
-  // getWeather() {
-  //   let info = [];
-  //   info = this.props.moreDaysData.filter(el => el.dt_txt.includes('15:00:00'));
-  //   let date = this.props.moreDaysData.filter(el => el.dt_txt.includes('15:00:00')).map(el => moment.unix(el.dt).format('MMM Do YY'));
-  //   this.setState({
-  //     fiveDaysWeather: info,
-  //     fiveDaysDate: date
-  //   })
-  //   console.log(this.props.moreDaysData);
-  // }
-
 
 
   render() {
