@@ -22,19 +22,19 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
-    await this.props.fetchData();
     await this.props.fetchDataMoreDays();
+    await this.props.fetchData();
     this.timeFunction();
     this.getPicture();
   }
 
   getData = async (e) => {
     e.preventDefault();
+    await this.props.fetchDataMoreDays(this.props.input);
     await this.props.fetchData(this.props.input);
     this.props.saveToList(this.props.input);
     this.getPicture(this.props.input);
     this.props.inputClear();
-    await this.props.fetchDataMoreDays(this.props.input);
   }
 
   getDataFromFavoriteList = (e) => {

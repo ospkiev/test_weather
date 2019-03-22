@@ -1,0 +1,20 @@
+.city_name{
+    font-size: 2rem;
+}
+
+ul{
+list-style: none;
+}
+
+.icon{
+    display: block;
+    width: 100px;
+    height: auto;
+}
+
+.date{
+    font-size: 1.3rem;
+}
+
+
+

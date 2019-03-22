@@ -16,8 +16,8 @@
 .input_wrapper{
   display: flex;
   position: absolute;
-  top: 18px;
-  right: 8.7%;
+  top: 4%;
+  left: 83%;
   height: 30px;
 }
 
@@ -41,7 +41,7 @@
 .favoriteList{
   position: absolute;
   top: 10%;
-  right: 15%;
+  left: 83%;
   color: #fff;
 }
 
