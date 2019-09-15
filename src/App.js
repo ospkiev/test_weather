@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
+import urls from './constants/urls';
 import { connect } from 'react-redux';
 import { inputAction } from './redux/actions/inputAction';
 import { fetchData } from './redux/actions/fetchDataAction';
@@ -55,7 +56,7 @@ class App extends Component {
   };
 
   getPicture = (q) => {
-    axios.get(`https://pixabay.com/api/?key=5018958-ed49ccd90878e6614abdf24a6&q=${q || 'Kiev'}`)
+    axios.get(`${urls.getPicture}${q || 'Kiev'}`)
       .then(res => {
         this.setState({
           picturesCity: res.data.hits[Math.floor(Math.random() * res.data.hits.length)].largeImageURL,
@@ -92,10 +93,7 @@ class App extends Component {
       </div >
     );
   }
-}
-
-
-
+};
 
 function mapStateToProps(state) {
   return {
@@ -104,26 +102,26 @@ function mapStateToProps(state) {
     loading: state.data.loading,
     favoriteList: state.favoriteList,
   }
-}
+};
 
 function mapDispatchToProps(dispatch) {
   return {
-    inputAction: function (e) {
+    inputAction: (e) => {
       dispatch(inputAction(e))
     },
-    fetchData: function (param) {
+    fetchData: (param) => {
       dispatch(fetchData(param))
     },
-    saveToList: function (input) {
+    saveToList: (input) => {
       dispatch(saveToList(input))
     },
-    inputClear: function () {
+    inputClear: () => {
       dispatch(inputClear())
     },
-    fetchDataMoreDays: function (param) {
+    fetchDataMoreDays: (param) => {
       dispatch(fetchDataMoreDays(param))
     },
   }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

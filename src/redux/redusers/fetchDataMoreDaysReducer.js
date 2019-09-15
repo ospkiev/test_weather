@@ -1,8 +1,7 @@
 const startStateMoreDays = {
     data: [],
     loading: false,
-}
-
+};
 
 export default function fetchDataMoreDays(state = startStateMoreDays, action) {
     switch (action.type) {
@@ -15,4 +14,4 @@ export default function fetchDataMoreDays(state = startStateMoreDays, action) {
         default:
             return state;
     }
-}
+};

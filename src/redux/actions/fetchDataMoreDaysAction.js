@@ -1,4 +1,5 @@
 import axios from 'axios';
+import urls from '../../constants/urls'
 
 export function fetchDataMoreDaysAction(data) {
     return {
@@ -8,9 +9,8 @@ export function fetchDataMoreDaysAction(data) {
 };
 
 export const fetchDataMoreDays = (param) => dispatch => {
-    axios.get(`https://api.openweathermap.org/data/2.5/forecast?APPID=8defc985a5e2c764076c53bf90c6c44e&units=metric&lang=ru&q=${param || 'Kiev'}`)
+    axios.get(`${urls.getWeatherFiveDays}${param || 'Kiev'}`)
         .then(res => dispatch(fetchDataMoreDaysAction(res.data)))
-        // .then(res => console.log(res.data))
         .catch(error => console.log(error))
 }
 

@@ -8,4 +8,4 @@ export default function saveToListReducer(state = [], action) {
         default:
             return state;
     }
-}
+};
