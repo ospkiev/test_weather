@@ -5,6 +5,7 @@ export default function saveToListReducer(state = [], action) {
                 state = [action.data, ...state];
                 return state.slice(0, 5)
             };
+            break;
         default:
             return state;
     }
